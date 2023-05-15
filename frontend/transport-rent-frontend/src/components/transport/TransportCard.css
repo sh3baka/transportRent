@@ -1,0 +1,70 @@
+.transport-card {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  padding: 20px;
+  flex-basis: calc(50% - 20px);
+  margin-bottom: 40px;
+  max-width: 800px;
+  min-width: 400px;
+  position: relative;
+}
+
+.transport-image {
+  flex-basis: 40%;
+  max-width: 40%;
+  margin-right: 20px;
+  min-width: 40%;
+}
+
+.transport-image img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+}
+
+.transport-info {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px 40px;
+  align-items: center;
+}
+
+.transport-info h3 {
+  color: #fdb913;
+  grid-column: 1 / span 2;
+  margin: 0 0 16px;
+}
+
+.transport-info p {
+  margin: 0;
+}
+
+.transport-card-buttons {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.transport-card-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.reserve-button {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: #fff;
+}

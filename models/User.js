@@ -45,12 +45,12 @@ const userSchema = new mongoose.Schema({
     ],
     tokens: [
         {
-          token: {
-            type: String,
-            required: true
-          }
+            token: {
+                type: String,
+                required: true
+            }
         }
-      ]
+    ]
 });
 
 userSchema.pre('save', async function (next) {
@@ -65,14 +65,14 @@ userSchema.pre('save', async function (next) {
 
 userSchema.methods.generateAuthToken = async function () {
     const user = this;
-    const token = jwt.sign({ _id: user._id.toString() }, process.env.JWT_SECRET, { expiresIn: '24h' });
-  
+    const token = jwt.sign({ _id: user._id.toString(), role: user.role, name: user.name, email: user.email }, process.env.JWT_SECRET, { expiresIn: '24h' });
+
     user.tokens = user.tokens.concat({ token });
     await user.save();
-  
+
     return token;
-  };
-  
+};
+
 
 userSchema.statics.findByCredentials = async (email, password) => {
     const user = await User.findOne({ email });

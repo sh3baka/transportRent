@@ -36,3 +36,19 @@ exports.logoutUser = async (req, res) => {
         res.status(500).send();
     }
 };
+
+exports.checkToken = async (req, res) => {
+    try {
+        const tokenFound = req.user.tokens.some((token) => {
+            return token.token === req.token;
+        });
+
+        if (tokenFound) {
+            res.status(200).json({ message: 'Token is valid' });
+        } else {
+            res.status(401).json({ message: 'Token is not valid' });
+        }
+    } catch (error) {
+        res.status(500).send();
+    }
+};
